@@ -29,7 +29,7 @@ const getEmployeeById = (request, response) => {
 const createEmployee = (request, response) => {
   const { name, age, department } = request.body
 
-  pool.query('INSERT INTO Employee (Employee_name, Employee_age, Employee_department) VALUES ($1, $2, $3)', [ name, age, department], (error, results) => {
+  pool.query('INSERT INTO Employee (Employee_name, Employee_age, Department_id) VALUES ($1, $2, $3)', [ name, age, department], (error, results) => {
     if (error) {
       throw error
     }
@@ -42,7 +42,7 @@ const updateEMPLOYEE = (request, response) => {
   const { name, age, department} = request.body
 
   pool.query(
-    'UPDATE Employee SET Employee_name = $1, Employee_age = $2, Employee_department= $3 WHERE Employee_id = $4',
+    'UPDATE Employee SET Employee_name = $1, Employee_age = $2, Department_id = $3 WHERE Employee_id = $4',
     [ name, age, department, id],
     (error, results) => {
       if (error) {
